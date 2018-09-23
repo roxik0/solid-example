@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fakturownik", "Fakturownik\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fakturownik.Logic", "Invoice.Logic\Fakturownik.Logic.csproj", "{5DA397C4-6081-4E7A-BFA0-D39898F2D7AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fakturownik.Logic.Tests", "Fakturownik.Logic.Tests\Fakturownik.Logic.Tests.csproj", "{DC110D5A-E4A0-4427-8101-9C334F6C83F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5DA397C4-6081-4E7A-BFA0-D39898F2D7AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DA397C4-6081-4E7A-BFA0-D39898F2D7AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DA397C4-6081-4E7A-BFA0-D39898F2D7AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC110D5A-E4A0-4427-8101-9C334F6C83F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC110D5A-E4A0-4427-8101-9C334F6C83F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC110D5A-E4A0-4427-8101-9C334F6C83F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC110D5A-E4A0-4427-8101-9C334F6C83F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

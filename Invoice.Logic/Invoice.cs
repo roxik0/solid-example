@@ -35,7 +35,7 @@ namespace Fakturownik.Logic
 
             return str.ToString();
         }
-
+                      
         public string SumAll()
         {
             return $"{Items.Select(c=>c.Quantity*c.SinglePrice).Sum()} ";

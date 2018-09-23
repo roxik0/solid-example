@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Currency.cs" />
+    <Compile Include="CurrencyManager.cs" />
     <Compile Include="Good.cs" />
     <Compile Include="Invoice.cs" />
     <Compile Include="InvoiceItem.cs" />
