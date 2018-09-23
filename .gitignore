@@ -1,0 +1,9 @@
+﻿################################################################################
+# Ten plik .gitignore został utworzony automatycznie przez Microsoft(R) Visual Studio.
+################################################################################
+
+/Fakturownik/obj/Debug
+/.vs/Fakturownik/v15/Server/sqlite3
+/Fakturownik/bin/Debug
+/Invoice.Logic/bin/Debug
+/Invoice.Logic/obj/Debug
