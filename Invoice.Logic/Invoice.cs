@@ -10,6 +10,16 @@ namespace Fakturownik.Logic
     {
         public List<InvoiceItem> Items { get; set; } = new List<InvoiceItem>();
 
+        public void SaveToFile()
+        {
+            //Here save to file
+        }
+
+        public void RunDiscount()
+        {
+            //Here code about discounts
+        }
+
         public string PrintToString()
         {
             int line_size = 40;
