@@ -7,5 +7,7 @@
         public decimal Quantity { get; set; }
         public decimal Price => SinglePrice * Quantity;
         public string GoodName => Good.Name;
+
+       
     }
 }

@@ -10,6 +10,7 @@ namespace Fakturownik.Logic
     {
         public List<InvoiceItem> Items { get; set; } = new List<InvoiceItem>();
 
+        public Currency Currency { get; set; }
         public string PrintToString()
         {
             int line_size = 40;
@@ -27,7 +28,15 @@ namespace Fakturownik.Logic
             {
                 str.Append($"{item.Good.Name}".PadLeft(20, '.'));
                 str.Append($"{item.Quantity}".PadLeft(10, '.'));
-                str.Append($"{item.SinglePrice*item.Quantity}".PadLeft(10, '.') );
+                if (Currency.EUR == Currency)
+                {
+                    str.Append($"{item.Price*4.01m}".PadLeft(10, '.'));
+                }
+                else
+                {
+                    str.Append($"{item.Price}".PadLeft(10, '.'));
+                    s
+                }
                 str.AppendLine();
             }
             str.Append('_', line_size);
@@ -38,12 +47,24 @@ namespace Fakturownik.Logic
 
         public string SumAll()
         {
-            return $"{Items.Select(c=>c.Quantity*c.SinglePrice).Sum()} ";
+            if (Currency==Currency.PLN) {
+                return $"{Items.Select(c=>c.Price).Sum()} zł";
+            }
+            if (Currency == Currency.EUR)
+            {
+                return $"{Items.Select(c => c.Price*4.01m).Sum()} zł";
+            }
+            return "0 PLN";
         }
 
         public void AddInvoiceItem(InvoiceItem invoiceItem)
         {
             this.Items.Add(invoiceItem);
         }
+    }
+    public enum Currency
+    {
+        PLN,
+        EUR,
     }
 }
