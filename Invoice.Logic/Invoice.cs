@@ -15,9 +15,9 @@ namespace Fakturownik.Logic
         {
             int line_size = 40;
             StringBuilder str = new StringBuilder();
-            str.Append('_',line_size);
+            str.Append('_', line_size);
             str.AppendLine();
-            str.Append("Towar".PadLeft(20,'.'));
+            str.Append("Towar".PadLeft(20, '.'));
             str.Append("Ilość".PadLeft(10, '.'));
             str.Append("Cena".PadLeft(10, '.'));
             str.AppendLine();
@@ -28,15 +28,7 @@ namespace Fakturownik.Logic
             {
                 str.Append($"{item.Good.Name}".PadLeft(20, '.'));
                 str.Append($"{item.Quantity}".PadLeft(10, '.'));
-                if (Currency.EUR == Currency)
-                {
-                    str.Append($"{item.Price*4.01m}".PadLeft(10, '.'));
-                }
-                else
-                {
-                    str.Append($"{item.Price}".PadLeft(10, '.'));
-                    s
-                }
+                str.Append($"{item.Price * RateTable.Rates[Currency]}".PadLeft(10, '.'));
                 str.AppendLine();
             }
             str.Append('_', line_size);
@@ -47,14 +39,7 @@ namespace Fakturownik.Logic
 
         public string SumAll()
         {
-            if (Currency==Currency.PLN) {
-                return $"{Items.Select(c=>c.Price).Sum()} zł";
-            }
-            if (Currency == Currency.EUR)
-            {
-                return $"{Items.Select(c => c.Price*4.01m).Sum()} zł";
-            }
-            return "0 PLN";
+            return $"{Items.Select(c => c.Price*RateTable.Rates[Currency]).Sum()}";
         }
 
         public void AddInvoiceItem(InvoiceItem invoiceItem)
@@ -64,7 +49,15 @@ namespace Fakturownik.Logic
     }
     public enum Currency
     {
-        PLN,
-        EUR,
+        PLN = 0,
+        EUR = 1,
+        CNY = 2,
+    }
+    public static class RateTable{
+        public static Dictionary<Currency, decimal> Rates = new List<KeyValuePair<Currency, decimal>>() {
+            new KeyValuePair<Currency, decimal>(Currency.PLN,1.0m),
+            new KeyValuePair<Currency, decimal>(Currency.EUR,4.30m),
+            new KeyValuePair<Currency, decimal>(Currency.CNY,0.53m),
+        }.ToDictionary(c => c.Key, c => c.Value);
     }
 }

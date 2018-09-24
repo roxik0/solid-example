@@ -18,6 +18,7 @@ namespace Fakturownik
         {
             InitializeComponent();
             dataGridView1.AutoGenerateColumns = false;
+            comboBox1.SelectedIndex = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,6 +35,12 @@ namespace Fakturownik
             }
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = currentInvoice.Items;
+            textBox1.Text = currentInvoice.SumAll();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentInvoice.Currency = (Currency)comboBox1.SelectedIndex;
             textBox1.Text = currentInvoice.SumAll();
         }
     }
