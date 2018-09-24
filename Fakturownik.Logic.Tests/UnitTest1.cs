@@ -9,7 +9,7 @@ namespace Fakturownik.Logic.Tests
         [TestMethod]
         public void WhenChangeCurrencyPriceShouldChange()
         {
-            var item = new InvoiceItem()
+            var item = new LocalInvoiceItem()
             {
                 SinglePrice = 1,
                 Quantity = 1,
@@ -20,5 +20,42 @@ namespace Fakturownik.Logic.Tests
             var newPrice = item.Price;
             Assert.AreNotEqual(previousPrice, newPrice);
         }
+        [TestMethod]
+        public void UserSupervisorTest()
+        {
+            var supervisor = new SuperUser()
+            {
+               
+            };
+            var item = new SuperUser()
+            {
+                Supervisor = supervisor,
+            };
+            if (!(item is SuperUser))
+            {
+                Assert.AreEqual(supervisor, item.GetSupervisor());
+            }
+        }
+
     }
+    public class SuperUser:User
+    {
+        public override User GetSupervisor()
+        {
+            throw new ExecutionEngineException("Super user jest szefem");
+        }
+    }
+    public class User
+    {
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public int SecurityLevel { get; set; }
+        public User Supervisor { private get; set; }
+
+        public virtual User GetSupervisor()
+        {
+            return Supervisor;
+        }
+    }
+
 }

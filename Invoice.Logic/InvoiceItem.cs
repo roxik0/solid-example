@@ -9,5 +9,11 @@
         public virtual decimal Price => SinglePrice * Quantity * CurrencyManager.GetRate(Currency);
         public string GoodName => Good.Name;
     }
+    public class LocalInvoiceItem:InvoiceItem
+    {
+      
+        public override decimal Price => SinglePrice * Quantity;
 
-   }
+    }
+
+}
