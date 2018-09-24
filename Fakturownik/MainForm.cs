@@ -22,7 +22,8 @@ namespace Fakturownik
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new PrintForm(currentInvoice.PrintToString()).ShowDialog();
+            currentInvoice.CalculateDiscounts(10);
+            new PrintForm(ExportToString.PrintToString( currentInvoice)).ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -34,7 +35,7 @@ namespace Fakturownik
             }
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = currentInvoice.Items;
-            textBox1.Text = currentInvoice.SumAll();
+            textBox1.Text = InvoiceMathOperations.SumAll( currentInvoice);
         }
     }
 }
