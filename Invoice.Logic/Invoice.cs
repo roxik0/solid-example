@@ -14,7 +14,6 @@ namespace Fakturownik.Logic
         {
             this.Items.Add(invoiceItem);
         }
-
         
 
         public override string ToString()
